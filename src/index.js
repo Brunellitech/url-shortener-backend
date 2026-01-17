@@ -3,7 +3,10 @@ import cors from 'cors';
 import urlRoutes from './routes/url.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Servidor rodando");
+});
 
 // Middlewares
 app.use(cors());
@@ -15,6 +18,4 @@ app.get('/teste', (req, res) => res.send('Servidor rodando!'));
 // Conecta as rotas
 app.use('/', urlRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+
